@@ -9,7 +9,6 @@ import plotly.express as px
 from threading import Thread, current_thread
 from time import sleep
 from subprocess import call, DEVNULL
-from sources import data_preparations
 import sys
 
 
