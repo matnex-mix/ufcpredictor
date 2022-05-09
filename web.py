@@ -1,7 +1,6 @@
 #!/usr/bin/python -tt
 import numpy as np
 import pandas as pd
-from streamlit.server.Server import Server
 import streamlit as st
 import pickle
 from PIL import Image
