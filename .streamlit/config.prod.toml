@@ -70,7 +70,7 @@ runOnSave = false
 
 # The port where the server will listen for client and browser connections.
 # Default: 8501
-port = 80
+port = 443
 
 # Enables support for Cross-Origin Request Sharing, for added security.
 # Default: true
@@ -81,15 +81,15 @@ enableCORS = false
 
 # Internet address of the server server that the browser should connect to. Can be IP address or DNS name.
 # Default: 'localhost'
-serverAddress = "0.0.0.0"
+serverAddress = "ufc-predictor-docker.onrender.com"
 
 # Whether to send usage statistics to Streamlit.
 # Default: true
-gatherUsageStats = true
+gatherUsageStats = false
 
 # Port that the browser should use to connect to the server when in liveSave mode.
 # Default: whatever value is set in server.port.
-serverPort = 80
+serverPort = 443
 
 [s3]
 

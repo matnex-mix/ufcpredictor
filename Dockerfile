@@ -1,21 +1,48 @@
-FROM marcskovmadsen/awesome-streamlit_base:latest
+# base image
+# a little overkill but need it to install dot cli for dtreeviz
+FROM ubuntu:18.04
 
-WORKDIR /app
-ADD . ./
+# ubuntu installing - python, pip, graphviz, nano, libpq (for psycopg2)
+RUN apt-get update &&\
+    apt-get install python3.7 -y &&\
+    apt-get install python3-pip -y &&\
+    apt-get install graphviz -y &&\
+    apt-get install nano -y
 
-RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt \
-    && rm -rf requirements.txt
-
-# Default port for Azure Web App for containers is 80
-# Please note that port and serverPort in the config.toml file
-# should correspond to the exposed port
+# exposing default port for streamlit
 EXPOSE 80 443
 
-RUN mkdir ~/.streamlit
-RUN cp .streamlit/config.prod.toml ~/.streamlit/config.toml
-# RUN cp .streamlit/credentials.prod.toml ~/.streamlit/credentials.toml
-# RUN cp config.prod.py config.py
-RUN invoke sphinx.copy-from-project-root
-WORKDIR /app
+# making directory of app
+WORKDIR /streamlit-docker
 
-ENTRYPOINT [ "/bin/bash", "./scripts/run_awesome_streamlit_with_ping.sh"]
+# copy over requirements
+COPY requirements.txt ./requirements.txt
+
+# installing required packages
+RUN pip3 install -r requirements.txt
+
+# copying all app files to image
+COPY . .
+COPY ./streamlit 
+
+# cmd to launch app when container is run
+CMD python3 scripts/load_docker_db.py
+CMD streamlit run app.py
+
+# streamlit-specific commands for config
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
+
+RUN mkdir -p /root/.streamlit
+
+RUN bash -c 'echo -e "\
+[general]\n\
+email = \"\"\n\
+" > /root/.streamlit/credentials.toml'
+
+RUN cp .streamlit/config.prod.toml /root/.streamlit/config.toml
+
+# RUN bash -c 'echo -e "\
+# [server]\n\
+# enableCORS = false\n\
+# " > /root/.streamlit/config.toml'
