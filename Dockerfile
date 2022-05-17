@@ -28,8 +28,8 @@ RUN pip3 install -r requirements.txt
 COPY . .
 
 # cmd to launch app when container is run
-CMD python3 scripts/load_docker_db.py
-CMD streamlit run app.py
+# CMD python3 scripts/load_docker_db.py
+CMD streamlit run web.py
 
 # streamlit-specific commands for config
 ENV LC_ALL=C.UTF-8
