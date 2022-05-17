@@ -5,10 +5,11 @@ FROM ubuntu:18.04
 # ubuntu installing - python, pip, graphviz, nano, libpq (for psycopg2)
 RUN apt-get update &&\
     apt-get install python3.7 -y &&\
-    # apt-get install python3-pip -y &&\
+    apt-get install python3-pip -y &&\
     apt-get install graphviz -y &&\
     apt-get install nano -y &&\
-    python3 -m pip install pip
+    pip3 install -U pip
+RUN pip3 --version
 
 # exposing default port for streamlit
 EXPOSE 80 443
