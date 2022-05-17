@@ -4,6 +4,7 @@ FROM ubuntu:18.04
 
 # ubuntu installing - python, pip, graphviz, nano, libpq (for psycopg2)
 RUN apt-get update &&\
+	add-apt-repository ppa:deadsnakes/ppa -y &&\
     apt-get install python3.9 -y &&\
     apt-get install python3-pip -y &&\
     apt-get install graphviz -y &&\
