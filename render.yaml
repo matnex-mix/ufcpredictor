@@ -1,0 +1,15 @@
+- type: web
+  name: ufcpredictor
+  env: docker
+  plan: free
+  dockerfilePath: ./Dockerfile
+  # disk:
+  #   name: zulip-persistent-storage
+  #   mountPath: /data
+  envVars:
+    - key: DISABLE_HTTPS
+      value: True # Do not edit! Render gives you SSL automatically. This removes https-related config
+    - key: PORT
+      value: 80 # Do not edit! Nginx listens for http traffic at port 80
+    - key: SSL_CERTIFICATE_GENERATION # Render gives you SSL out of the box
+      value: 'self-signed' # We set this to self-signed, since setup requires a value, but this is not used
