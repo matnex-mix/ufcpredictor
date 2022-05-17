@@ -23,7 +23,6 @@ RUN pip3 install -r requirements.txt
 
 # copying all app files to image
 COPY . .
-COPY ./streamlit 
 
 # cmd to launch app when container is run
 CMD python3 scripts/load_docker_db.py
