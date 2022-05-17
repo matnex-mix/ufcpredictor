@@ -7,7 +7,8 @@ RUN apt-get update &&\
     apt-get install python3.7 -y &&\
     apt-get install python3-pip -y &&\
     apt-get install graphviz -y &&\
-    apt-get install nano -y
+    apt-get install nano -y &&\
+    pip3 install -U pip
 
 # exposing default port for streamlit
 EXPOSE 80 443
