@@ -285,8 +285,8 @@ def data_refresher_function(arg):
 		sleep(43200)
 
 
-data_refresher = Thread(target = data_refresher_function, args = (10, ))
-data_refresher.daemon = True
+# data_refresher = Thread(target = data_refresher_function, args = (10, ))
+# data_refresher.daemon = True
 
 try:
 	# data_refresher.start()
@@ -296,5 +296,6 @@ try:
 	
 	# data_refresher.join()
 except Exception as e:
-	data_refresher.alive = False
+	# data_refresher.alive = False
 	# sys.exit(e)
+	pass
