@@ -9,7 +9,6 @@ RUN apt-get update &&\
     apt-get install graphviz -y &&\
     apt-get install nano -y &&\
     pip3 install -U pip
-RUN pip3 --version
 
 # exposing default port for streamlit
 EXPOSE 80 443
