@@ -2,6 +2,8 @@
 # a little overkill but need it to install dot cli for dtreeviz
 FROM ubuntu:20.04
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 # ubuntu installing - python, pip, graphviz, nano, libpq (for psycopg2)
 RUN apt-get update &&\
     apt-get install python3.7 -y &&\
