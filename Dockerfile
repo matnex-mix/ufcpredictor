@@ -1,6 +1,6 @@
 # base image
 # a little overkill but need it to install dot cli for dtreeviz
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 # ubuntu installing - python, pip, graphviz, nano, libpq (for psycopg2)
 RUN apt-get update &&\
